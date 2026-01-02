@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 
-function Card({item, id, handleClick, disabled, disOne, disTwo}){
+function Card({item, id, handleClick, disabled}){
 
     const itemClass = item.stat ? " active " + item.stat :"";
 

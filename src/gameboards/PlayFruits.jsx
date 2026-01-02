@@ -62,32 +62,9 @@ const PlayFruits = () =>
       const [prev, setPrev] = useState(-2);
       const [disabled, setDisabled] = useState(false);
 
+      // Syntax to remember:
+      //   if(items[id].stat.includes('card2'))
 
-      // function passCheck(id)
-      // {
-      //     const pass1 = items[id].stat.includes('card1');
-      //     const pass2 = items[id].stat.includes('card2');
-      //     const pass3 = items[id].stat.includes('card3');
-
-      //     if(pass1==true && pass2==true)
-      //     {
-      //         return true;
-      //     }
-      //     else
-      //     {
-      //         return false;
-      //     }
-      // }
-
-      function cardOneBlock(id){
-        if(items[id].stat.includes('card1'))
-          return true;
-      }
-      
-      function cardTwoBlock(id){
-        if(items[id].stat.includes('card2'))
-          return true;
-      }
 
       function checkThree(current)
       {
@@ -132,26 +109,30 @@ const PlayFruits = () =>
       }
 
       function handleClick(id){
-          // if((!vanishCheck(id)&&(!passCheck(id)))){
             if((!vanishCheck(id))){
-            if(prev == -2)
-            {    
-              items[id].stat = 'active card1'
-              setItems([...items])
-              setPrev(-1);
-              setPrevprev(id);
+              if(prev == -2)
+              {    
+                items[id].stat = 'active'
+                setItems([...items])
+                setPrev(-1);
+                setPrevprev(id);
+              }
+              else if(prev == -1)
+              {
+                if(id === prevprev){return}
+
+                items[id].stat = 'active'
+                setItems([...items])
+                setPrev(id);
+              }
+              else{
+
+                if(id === prev || id === prevprev){return}
+
+                //items[id].stat = 'card3'
+                checkThree(id);
+              }
             }
-            else if(prev == -1)
-            {
-              items[id].stat = 'active card2'
-              setItems([...items])
-              setPrev(id);
-            }
-            else{
-              items[id].stat = 'card3'
-              checkThree(id);//mind uses "global" states
-            }
-          }
       }
 
 
