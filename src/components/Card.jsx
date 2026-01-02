@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 
-function Card({item, id, handleClick}){
+function Card({item, id, handleClick, disabled, disOne, disTwo}){
 
     const itemClass = item.stat ? " active " + item.stat :"";
 
@@ -27,8 +27,10 @@ function Card({item, id, handleClick}){
 
     return (
         <div className={"card"+itemClass} onClick={()=>{
+            if(!disabled){
             handleClick(id);
-            speak(item.text, item.lang);
+            speak(item.text, item.lang)
+            };
         }}>
         {/* <div className="card" onClick={()=>handleClick(id)}></div> */}
             <span role="img" aria-label={item.text}>{item.text}{item.icon}</span>{/* {item.id} */}
