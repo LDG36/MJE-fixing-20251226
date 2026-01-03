@@ -62,9 +62,6 @@ const PlayFruits = () =>
       const [prev, setPrev] = useState(-2);
       const [disabled, setDisabled] = useState(false);
 
-      // Syntax to remember:
-      //   if(items[id].stat.includes('card2'))
-
 
       function checkThree(current)
       {
