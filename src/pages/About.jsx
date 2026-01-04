@@ -24,7 +24,8 @@ const About = () => {
               Netlify is a fee hosting provider for front-end websites.
             </p>
         </div>
-        <div className="stylingQuickAccess">
+        {/* commented because other gameboards are not ready!!! */}
+        {/* <div className="stylingQuickAccess">
           <h1 className="landingHeader">Quick Access</h1>
           <div className="quickBtn">
             <Link to='/playfruits'>
@@ -63,7 +64,7 @@ const About = () => {
                 </button>
             </Link>
           </div>
-        </div>
+        </div> */}
     </article>
     </>
   )

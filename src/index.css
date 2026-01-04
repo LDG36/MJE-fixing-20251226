@@ -188,7 +188,8 @@ a{
   display:flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  /* flex-direction: column; <=this messes up the margins*/
+  flex-wrap: wrap;
 
 }
 
@@ -369,7 +370,7 @@ ABOVE - styling game area - copied from separte project - LDG - 20251013
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(8, 1fr);
-        gap: 1em;
+        gap: 0.5em;
         animation: slowFocus 5s linear;
       }
 
@@ -383,11 +384,12 @@ ABOVE - styling game area - copied from separte project - LDG - 20251013
         align-items: center;
         max-height:40px;
 
+        
         /* this 29vw worked when there was no fontsize set - it gave nice margin on mobile*/
-        max-width:29vw;
+        max-width:27vw;
         /* this sets the fontsize hardcoded not responsive */
         font-size:12px;
-        min-width:28vw;
+        min-width:27vw;
       }
 
       .container{
@@ -396,6 +398,7 @@ ABOVE - styling game area - copied from separte project - LDG - 20251013
         justify-content: center;
         margin-bottom:200px;
         max-width:100%;
+        /* margin-left:10px; */
 
       }
 
@@ -411,20 +414,24 @@ ABOVE - styling game area - copied from separte project - LDG - 20251013
   }
 
 
-.styleTimer{
+/* .styleTimer{
 
   text-align:center;
   display:block;
-  margin-top:20px;
+  margin-top:40px;
   font-size:28px;
 
-}
+} */
 
 .styleMoves{
 
   text-align:center;
   display:block;
   font-size:28px;
+  margin-top:40px;
+  /* this width makes div with score and timer fold below the gameboard
+  see the .container with: flex-wrap: wrap; */
+  width:100%;
 
 }
 
@@ -437,3 +444,17 @@ ABOVE - styling game area - copied from separte project - LDG - 20251013
 
 }
 
+.styleResult2{
+
+  text-align:center;
+  display:block;
+  margin-top:20px;
+  font-size:28px;
+
+}
+
+.redFont{
+  color:red;
+  font-weight: 900;
+  font-size: 28px;
+}

@@ -34,17 +34,18 @@ const Next1 = () => {
       </button>
       </Link>
 
-      <Link to="/playmoods">
+      {/* commented because other gameboards are not ready!!! */}
+      {/* <Link to="/playmoods">
       <button className="startBtn2">
         Play Next
       </button>
-      </Link>
+      </Link> */}
 
       <div className="styleResult">
         Your Score: <b>{state?.moves+1}</b> moves!
       </div>
 
-      <div className="styleResult">
+      <div className="styleResult2">
         Your Time: <b>{formatTime(state?.time)}</b>
       </div>
 
