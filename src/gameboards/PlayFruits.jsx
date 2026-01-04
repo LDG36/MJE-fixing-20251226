@@ -61,6 +61,51 @@ const PlayFruits = () =>
       const [prevprev, setPrevprev] = useState(-1);
       const [prev, setPrev] = useState(-2);
       const [disabled, setDisabled] = useState(false);
+      const [moves, setMoves] = useState(0);
+
+      //Timer related! ------------------------------------------------------
+      const [time, setTime] = useState(0);        // seconds
+      const [isRunning, setIsRunning] = useState(false);
+      const timerRef = useRef(null);
+
+      // Start the timer
+      const startTimer = () => {
+        if (timerRef.current) return; // prevent multiple intervals
+
+        setIsRunning(true);
+        timerRef.current = setInterval(() => {
+          setTime(prev => prev + 10);
+        }, 10);
+      };
+
+      // Stop the timer
+      const stopTimer = () => {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+        setIsRunning(false);
+      };
+
+      // Reset the timer
+      const resetTimer = () => {
+        stopTimer();
+        setTime(0);
+      };
+
+        // Format time as MM:SS.mmm
+      const formatTime = (ms) => {
+        const minutes = Math.floor(ms / 60000);
+        const seconds = Math.floor((ms % 60000) / 1000);
+        // const milliseconds = ms % 1000;
+        const hundredths = Math.floor((ms % 1000) / 10);
+
+
+        return (
+          String(minutes).padStart(2, "0") + ":" +
+          String(seconds).padStart(2, "0") + "." +
+          String(hundredths).padStart(2, "0")
+        );
+      };
+      //Time related--------------------------------------------------------------
 
 
       function checkThree(current)
@@ -83,7 +128,10 @@ const PlayFruits = () =>
               setPrevprev(-1)
 
               if (items.every(item => item.stat.includes("vanish"))) {
-              navigate('/next1');}
+              navigate('/next1', {state: {moves, time} });
+              stopTimer();
+              resetTimer();
+              }
 
               setDisabled(false); 
             },2000)
@@ -113,6 +161,8 @@ const PlayFruits = () =>
                 setItems([...items])
                 setPrev(-1);
                 setPrevprev(id);
+                startTimer();
+                
               }
               else if(prev == -1)
               {
@@ -121,13 +171,16 @@ const PlayFruits = () =>
                 items[id].stat = 'active'
                 setItems([...items])
                 setPrev(id);
+                
               }
               else{
 
                 if(id === prev || id === prevprev){return}
 
+                setMoves(moves+1);
                 //items[id].stat = 'card3'
                 checkThree(id);
+                
               }
             }
       }
@@ -148,6 +201,10 @@ const PlayFruits = () =>
 
             ))}
         </div>
+        <div className="styleMoves">
+          Amount of Attempts: <b>{moves}</b> |  Time: <b>{formatTime(time)}</b>
+        </div>
+
       </>
     )
 }

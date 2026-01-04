@@ -188,6 +188,8 @@ a{
   display:flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+
 }
 
 .settingsHeading{
@@ -384,7 +386,7 @@ ABOVE - styling game area - copied from separte project - LDG - 20251013
         /* this 29vw worked when there was no fontsize set - it gave nice margin on mobile*/
         max-width:29vw;
         /* this sets the fontsize hardcoded not responsive */
-        font-size:9px;
+        font-size:12px;
         min-width:28vw;
       }
 
@@ -408,4 +410,30 @@ ABOVE - styling game area - copied from separte project - LDG - 20251013
 
   }
 
+
+.styleTimer{
+
+  text-align:center;
+  display:block;
+  margin-top:20px;
+  font-size:28px;
+
+}
+
+.styleMoves{
+
+  text-align:center;
+  display:block;
+  font-size:28px;
+
+}
+
+.styleResult{
+
+  text-align:center;
+  display:block;
+  margin-top:20px;
+  font-size:28px;
+
+}
 
